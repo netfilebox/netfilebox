@@ -4,9 +4,15 @@
 * View [My Projects](https://paulsrusso.github.io)
 
 # Prerequisites
-##[Vagrant](https://www.vagrantup.com/)
-# Steps - Install the pre-build image or build from scratch 
-## Pull pre-built images from NetFileBox
+* [Vagrant](https://www.vagrantup.com/)
+* [Read more information](https://paulsrusso.github.io/netfilebox) on this setup
+# Clone the repository
+```
+  git clone https://github.com/netfilebox/netfilebox.git
+  cd netfilebox
+```
+# Install images pre-built by NefFileBox or build images yourself locally from scratch 
+## Install images pre-built by NefFileBox   
 ```
 cd ./vagrant
 vagrant up
@@ -24,9 +30,9 @@ web       | Waiting for SSL keys...
 ctrl c
 ./bin/self-signed.sh
 wait for completion
-https://localhost:8443/nextcloud/index.php
 ```
-## Build images from scratch
+### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
+## Build images locally from scratch
 ```
 cd ./vagrant
 vagrant up
@@ -45,5 +51,5 @@ docker-compose logs
 ctrl c
 ./bin/self-signed.sh
 wait for completion
-https://localhost:8443/nextcloud/index.php
 ```
+### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
