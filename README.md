@@ -13,8 +13,8 @@
    cd netfilebox
 ```
 
-# Install images pre-built by NefFileBox or build images yourself locally from scratch 
-## Install images pre-built by NefFileBox   
+## Install images pre-built by NefFileBox or build images yourself locally from scratch 
+### Install images pre-built by NefFileBox   
 ```
 cd ./vagrant
 vagrant up
@@ -34,7 +34,7 @@ ctrl c
 wait for completion
 ```
 ### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
-## Build images locally from scratch
+### Build images locally from scratch
 ```
 cd ./vagrant
 vagrant up
