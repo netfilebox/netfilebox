@@ -1,0 +1,10 @@
+[Unit]
+Description=Netfilebox startup
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+ExecStart=/opt/netfilebox/bin/boot.sh
+
+[Install]
+WantedBy=multi-user.target

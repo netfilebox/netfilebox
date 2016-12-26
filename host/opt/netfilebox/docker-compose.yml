@@ -1,0 +1,43 @@
+db:
+   image: netfilebox/db
+   container_name: db
+   hostname: db
+   environment:
+      MYSQL_ROOT_PASSWORD:
+      USER_EMAIL:
+      USER_PASSWORD:
+   volumes:
+      - /opt/netfilebox/data/db/data:/var/lib/mysql 
+      - /opt/netfilebox/data/db/logs:/var/log/mysql
+ 
+nextcloud:
+   image: netfilebox/nextcloud
+   container_name: nextcloud
+   environment:
+      MYSQL_ROOT_PASSWORD:
+      FQDN:
+      INTERNAL_IP:
+      EXTERNAL_IP:
+   volumes:
+      - /opt/netfilebox/data/web/nextcloud/data:/opt/nextcloud/data 
+      - /opt/netfilebox/data/web/nextcloud/config:/opt/www/nextcloud/config 
+
+web:
+   image: netfilebox/web
+   container_name: web
+   hostname: web
+   ports:
+      - 80:80
+      - 443:443
+   links:
+      - db
+   environment:
+      MYSQL_ROOT_PASSWORD:
+      FQDN:
+      EXTERNAL_IP:
+   volumes:
+      - /opt/netfilebox/data/web/logs:/var/log/nginx 
+      - /opt/netfilebox/data/ssl:/opt/ssl 
+      - /run/systemd:/run/systemd 
+   volumes_from:
+      - nextcloud

@@ -1,0 +1,19 @@
+baseos:
+   build: ./baseos
+   container_name: baseos
+
+basedb_client:
+   build: ./basedb_client
+   container_name: basedb_client
+
+db:
+   build: ./db
+   container_name: db
+
+web:
+   build: ./web
+   container_name: web
+
+nextcloud:
+   build: ./nextcloud
+   container_name: nextcloud

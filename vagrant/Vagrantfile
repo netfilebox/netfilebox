@@ -1,0 +1,54 @@
+$script = <<SCRIPT
+   echo Installing dependencies...
+   # add groups and users
+   sudo groupadd -g 107 mysql
+   sudo useradd -u 104 -g 107 mysql -s /bin/false
+   sudo groupadd -g 5000 vmail
+   sudo useradd -u 5000 -g 5000 vmail -s /bin/false
+   sudo useradd -m -g users -s /bin/bash netfilebox
+   sudo groupadd -g 33 www-data
+   sudo useradd -u 33 -g 33 www-data -s /bin/false
+
+   sudo yum update -y && yum install -y net-tools wget curl python unzip zip cron vim epel-release
+   sudo yum install -y fail2ban 
+
+   sudo curl -sSL https://get.docker.com/ | sh
+   sudo chkconfig docker on
+   sudo curl -L https://github.com/docker/compose/releases/download/1.5.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+   sudo chmod 755  /usr/local/bin/docker-compose
+   sudo ln -s /usr/local/bin/docker-compose /usr/bin/
+
+   sudo usermod -aG docker vagrant
+   
+   service postfix stop
+   chkconfig postfix off
+
+SCRIPT
+
+Vagrant.configure(2) do |config|
+  config.ssh.insert_key = false
+
+  config.vm.box = "centos/7"
+
+  config.vm.provider "virtualbox" do |v|
+    v.name = "NetFileBox"
+    v.memory = 2048
+    v.cpus = 2
+  end
+
+  config.vm.provision "shell", inline: $script
+  config.vm.network "public_network", bridge: "eth0"
+
+  config.vm.network "forwarded_port", guest: 443, host: 8443
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 25, host: 25
+  config.vm.network "forwarded_port", guest: 993, host: 993 
+  config.vm.network "forwarded_port", guest: 587, host: 587
+
+
+  # argument is a set of non-required options.
+  config.vm.synced_folder "../dockerfiles", "/home/vagrant/netfilebox/dockerfiles"
+  config.vm.synced_folder "../host", "/home/vagrant/netfilebox/host"
+
+end

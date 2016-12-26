@@ -1,0 +1,9 @@
+#!/bin/bash
+export EXTERNAL_IP=$(ifconfig eth0|grep 'inet '|awk '{print $2}')
+export NETWORK_IP=$(route -n|grep 'U .*eth0'|awk '{print $1}')
+export MAC_ADDRESS=$(cat /sys/class/net/eth0/address)
+export FQDN=$(cat /etc/hostname)
+export MYSQL_ROOT_PASSWORD=changeme
+export USER_PASSWORD=changeme
+export USER_EMAIL=bob@example.com
+export IMAGE_TAG=latest
