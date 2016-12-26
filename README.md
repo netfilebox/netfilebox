@@ -6,11 +6,13 @@
 # Prerequisites
 * [Vagrant](https://www.vagrantup.com/)
 * [Read more information](https://paulsrusso.github.io/netfilebox) on this setup
+
 # Clone the repository
 ```
-  git clone https://github.com/netfilebox/netfilebox.git
-  cd netfilebox
+   git clone https://github.com/netfilebox/netfilebox.git
+   cd netfilebox
 ```
+
 # Install images pre-built by NefFileBox or build images yourself locally from scratch 
 ## Install images pre-built by NefFileBox   
 ```
