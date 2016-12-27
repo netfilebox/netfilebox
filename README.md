@@ -13,8 +13,8 @@
    cd netfilebox
 ```
 
-## Install images pre-built by NefFileBox or build images yourself locally from scratch 
-### Install images pre-built by NefFileBox   
+## Install images pre-built by NetFileBox or build images yourself locally from scratch 
+### Install images pre-built by NetFileBox   
 ```
 cd ./vagrant
 vagrant up
