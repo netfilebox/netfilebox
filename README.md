@@ -1,4 +1,3 @@
-<style scoped> @import url("./css/netfilebox.css"); </style>
 # NetFileBox Personal Cloud Setup
 * Created by Paul S. Russo  paul.russo@netfilebox.com
 * Twitter: [@PaulSRusso](https://twitter.com/@PaulSRusso)
@@ -31,7 +30,7 @@ Both install types are simple to do. Just copy and paste the listed commands one
 ### Install Type 1: images pre-built by NetFileBox   
 Initialize the Centos VM, dowloading Docker and creating users and groups.  
 The vagrant reload is needed to start Docker 
-```
+```bash
 cd ./vagrant
 vagrant up
 vagrant reload
@@ -39,14 +38,14 @@ vagrant reload
 Login to the system and run setup.sh  
 setup.sh will install a startup script that runs when the system boots.  
 It sets the environment and launches Docker containers at startup.  
-```
+```bash
 vagrant ssh
 cd netfilebox/host
 sudo ./setup.sh
 ```
 Logout the reload vagrant which reboots the system.   
 When the system reboots, docker images are pulled from NetFileBox and started. 
-```
+```bash
 exit
 vagrant reload
 ```
@@ -54,14 +53,14 @@ Log back into the system.
 Everything is placed under /opt/netfilebox  
 View the logs of the initailizing containers.    
 It will take a few minutes to download the images before the logs command below shows anything.
-```
+```bash
 vagrant ssh
 cd /opt/netfilebox
 docker-compose logs
 ```
 When you see this message **Waiting for SSL keys...** then exit the log and we will generate a self-signed SSL certificate.
 
-```
+```bash
 ctrl-c
 ./bin/self-signed.sh
 ```
@@ -70,7 +69,7 @@ When complete the system is ready! Logon with the browser.
 
 ---
 ### Install Type 2: Build images locally from scratch
-```
+```bash
 cd ./vagrant
 vagrant up
 vagrant reload
