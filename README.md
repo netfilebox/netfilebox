@@ -7,7 +7,8 @@ The environment that this runs is a Centos VM in Vagrant.
 [Read background information](https://paulsrusso.github.io/netfilebox) on this setup
 
 # Prerequisites
-* Download and Install <a href="https://www.vagrantup.com/downloads.html">Vagrant</a>
+* Download and Install <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box</a>
+* Download and Install <a href="https://www.vagrantup.com/downloads.html" target="_blank">Vagrant</a>
 
 # Clone the repository
 ```ShellSession
