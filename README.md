@@ -1,3 +1,4 @@
+<style scoped> @import url("./css/netfilebox.css"); </style>
 # NetFileBox Personal Cloud Setup
 * Created by Paul S. Russo  paul.russo@netfilebox.com
 * Twitter: [@PaulSRusso](https://twitter.com/@PaulSRusso)

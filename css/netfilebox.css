@@ -1,0 +1,7 @@
+.code {
+    overflow-x: auto;
+    padding: 10px;
+    background: #23241f;
+    -webkit-text-size-adjust: none;
+    border-radius: 5px;
+}
