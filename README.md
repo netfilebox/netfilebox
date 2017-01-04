@@ -14,6 +14,7 @@ The environment that this runs is a Centos VM in Vagrant.
 ```ShellSession
 git clone https://github.com/netfilebox/netfilebox.git
 cd netfilebox
+vagrant plugin install vagrant-vbguest
 ```
 
 ## Choose the type of install 
