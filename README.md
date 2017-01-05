@@ -9,6 +9,8 @@ The environment that this runs is a Centos VM in Vagrant.
 # Prerequisites
 * Download and Install <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box</a>
 * Download and Install <a href="https://www.vagrantup.com/downloads.html" target="_blank">Vagrant</a>
+* Windows users download and Install <a href="https://git-scm.com/downloads" target="_blank">Git Bash</a>
+
 
 # Clone the repository
 ```ShellSession
