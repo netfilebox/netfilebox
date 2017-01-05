@@ -44,21 +44,24 @@ vagrant ssh
 cd netfilebox/host
 sudo ./setup.sh
 ```
-Logout the reload vagrant which reboots the system.   
-When the system reboots, docker images are pulled from NetFileBox and started. 
+Logout out the VM and reload vagrant to reboot the system.   
+Docker images are pulled from NetFileBox and started.   
+This will take a few minutes depending on your connection speed.
 ```ShellSession
 exit
 vagrant reload
 ```
-Log back into the system.   
-Everything is placed under /opt/netfilebox  
-View the logs of the initailizing containers.    
-It will take a few minutes to download the images before the logs command below shows anything.
+Log back into the system and type *docker images*
 ```ShellSession
 vagrant ssh
+docker images
+```
+When the three images (db, web, and nextcloud) have been downloaded view the logs of the initailizing containers   
+```ShellSession
 cd /opt/netfilebox
 docker-compose logs
 ```
+Everything is placed under /opt/netfilebox   
 When you see this message **Waiting for SSL keys...** then exit the log and we will generate a self-signed SSL certificate.
 
 ```ShellSession
