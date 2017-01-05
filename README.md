@@ -68,6 +68,7 @@ When you see this message **Waiting for SSL keys...** then exit the log and we w
 ctrl-c
 ./bin/self-signed.sh
 ```
+**Don't type anything** An automated script fills out the values for the ssh key generation.   
 When complete the system is ready! Logon with the browser.   
 ### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
 
