@@ -20,7 +20,7 @@ $script = <<SCRIPT
    sudo ln -s /usr/local/bin/docker-compose /usr/bin/
 
    sudo usermod -aG docker vagrant
-   
+
    service postfix stop
    chkconfig postfix off
 
@@ -49,7 +49,7 @@ Vagrant.configure(2) do |config|
 
   # argument is a set of non-required options.
   config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", type: "virtualbox"
+  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> 'vagrant', :group=>'www-data', :mount_options => ['dmode=0770', 'fmode=0770'], type: "virtualbox"
   config.vm.synced_folder "../dockerfiles", "/home/vagrant/netfilebox/dockerfiles", type: "virtualbox"
   config.vm.synced_folder "../host", "/home/vagrant/netfilebox/host", type: "virtualbox"
 
