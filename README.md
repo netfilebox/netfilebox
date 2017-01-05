@@ -37,14 +37,13 @@ cd ./vagrant
 vagrant up
 vagrant reload
 ```
-Login to the VM and run setup.sh  
+Login to the VM and run setup.sh   
+This configures a script to set environment variables and launch Docker containers at startup.   
 ```ShellSession
 vagrant ssh
 cd netfilebox/host
 sudo ./setup.sh
 ```
-This configures a script to set environment variables and launch Docker containers at startup.   
-
 Logout the reload vagrant which reboots the system.   
 When the system reboots, docker images are pulled from NetFileBox and started. 
 ```ShellSession
