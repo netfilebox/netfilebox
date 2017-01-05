@@ -49,7 +49,7 @@ Vagrant.configure(2) do |config|
 
   # argument is a set of non-required options.
   config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-  config.vm.synced_folder "../data", "/opt/netfilebox/data", type: "virtualbox"
+  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", type: "virtualbox"
   config.vm.synced_folder "../dockerfiles", "/home/vagrant/netfilebox/dockerfiles", type: "virtualbox"
   config.vm.synced_folder "../host", "/home/vagrant/netfilebox/host", type: "virtualbox"
 
