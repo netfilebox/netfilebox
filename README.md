@@ -3,8 +3,7 @@
 * Twitter: [@PaulSRusso](https://twitter.com/@PaulSRusso)
 * View [My Projects](https://paulsrusso.github.io)
 
-The environment that this runs is a Centos VM in Vagrant.   
-[Read background information](https://paulsrusso.github.io/netfilebox) on this setup
+The environment that this runs is a Centos VM in Vagrant. [Read background information](https://paulsrusso.github.io/netfilebox) on this setup.
 
 # Prerequisites
 * Download and Install <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box</a>
@@ -35,23 +34,19 @@ vagrant plugin install vagrant-vbguest
 Both install types are simple to do. Just copy and paste the listed commands one at a time.
 
 ### Install Type 1: images pre-built by NetFileBox   
-Initialize the Centos VM, dowloading Docker and creating users and groups.  
-The vagrant reload is needed to start Docker 
+Initialize the Centos VM, dowload Docker images and create users and groups. A vagrant reload is needed to start the Docker containers.
 ```ShellSession
 cd ./vagrant
 vagrant up
 vagrant reload
 ```
-Login to the VM and run setup.sh   
-This configures a script to set environment variables and launch Docker containers at startup.   
+Login to the VM and run setup.sh. This script sets environment variables and configures another script to launch Docker containers at startup.   
 ```ShellSession
 vagrant ssh
 cd netfilebox/host
 sudo ./setup.sh
 ```
-Logout out the VM and reload vagrant to reboot the system.   
-Docker images are pulled from NetFileBox and started.   
-This will take a few minutes depending on your connection speed.
+Logout out the VM and reload vagrant to reboot the system. Docker images are pulled from NetFileBox and started. It will take a few minutes depending on your connection speed.
 ```ShellSession
 exit
 vagrant reload
@@ -73,8 +68,7 @@ When you see this message **Waiting for SSL keys...** then exit the log and we w
 ctrl-c
 ./bin/self-signed.sh
 ```
-**Don't type anything** An automated script fills out the values for the ssh key generation.   
-When complete the system is ready! Logon with the browser.   
+**Don't type anything**. An automated script fills out the values for the ssh key generation. When complete the system is ready! Logon with the browser.   
 ### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
 
 ---
