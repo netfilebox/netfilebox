@@ -38,8 +38,16 @@ The three commands below will install, update and configure Centos on Vagrant.  
 ```ShellSession
 cd ./vagrant
 vagrant up
+```
+Edit the VagrantFile and uncomment out thes data directory, then reload.
+```
+vim VagrantFile
+:51
+x
+:wq
 vagrant reload
 ```
+
 Login to the VM and run setup.sh. This script sets environment variables and configures another script to pull the Docker images from NetFileBox docker hub repository and launch the containers at startup.   
 ```ShellSession
 vagrant ssh
@@ -76,6 +84,10 @@ ctrl-c
 ```ShellSession
 cd ./vagrant
 vagrant up
+vim VagrantFile
+:51
+x
+:wq
 vagrant reload
 vagrant ssh
 cd ./netfilebox/dockerfiles/netfilebox
