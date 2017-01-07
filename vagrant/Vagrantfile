@@ -47,9 +47,10 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 587, host: 587
 
 
-  # argument is a set of non-required options.
+# Uncomment the line below to store data on the host
+#  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> 'vagrant', :group=>'www-data', :mount_options => ['dmode=0770', 'fmode=0770'], type: "virtualbox"
+
   config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> 'vagrant', :group=>'www-data', :mount_options => ['dmode=0770', 'fmode=0770'], type: "virtualbox"
   config.vm.synced_folder "../dockerfiles", "/home/vagrant/netfilebox/dockerfiles", type: "virtualbox"
   config.vm.synced_folder "../host", "/home/vagrant/netfilebox/host", type: "virtualbox"
 
