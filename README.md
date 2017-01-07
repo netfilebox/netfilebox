@@ -40,7 +40,7 @@ cd ./vagrant
 vagrant up
 ```
 Edit the VagrantFile and uncomment out thes data directory, then reload.
-```
+```ShellSession
 vim VagrantFile
 :51
 x
