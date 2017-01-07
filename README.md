@@ -74,7 +74,7 @@ Everything is placed under /opt/netfilebox
 When you see this message **Waiting for SSL keys...** then exit the log and we will generate a self-signed SSL certificate.
 
 ```ShellSession
-Ctrl-c
+ctrl-c
 ./bin/self-signed.sh
 ```
 **Don't type anything**. An automated script fills out the values for the ssh key generation. When complete the system is ready! Logon with the browser.   
