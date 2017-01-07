@@ -34,13 +34,13 @@ vagrant plugin install vagrant-vbguest
 Both install types are simple to do. Just copy and paste the listed commands one at a time.
 
 ### Install Type 1: images pre-built by NetFileBox   
-Initialize the Centos VM, dowload Docker images and create users and groups. A vagrant reload is needed to start the Docker containers.
+The three commands below will install, update and configure Centos on Vagrant.  It will download and install Docker and create the necessary users and groups for the system.
 ```ShellSession
 cd ./vagrant
 vagrant up
 vagrant reload
 ```
-Login to the VM and run setup.sh. This script sets environment variables and configures another script to launch Docker containers at startup.   
+Login to the VM and run setup.sh. This script sets environment variables and configures another script to pull the Docker images from NetFileBox docker hub repository and launch the containers at startup.   
 ```ShellSession
 vagrant ssh
 cd netfilebox/host
