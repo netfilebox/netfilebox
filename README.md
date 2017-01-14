@@ -1,5 +1,5 @@
 # NetFileBox Personal Cloud Setup
-* Created by Paul S. Russo  paul.russo@netfilebox.com
+* by Paul S. Russo  paul.russo@netfilebox.com
 * Twitter: [@PaulSRusso](https://twitter.com/@PaulSRusso)
 * View [My Projects](https://paulsrusso.github.io)
 
@@ -34,13 +34,21 @@ vagrant plugin install vagrant-vbguest
 Both install types are simple to do. Just copy and paste the listed commands one at a time.
 
 ### Install Type 1: images pre-built by NetFileBox   
-Initialize the Centos VM, dowload Docker images and create users and groups. A vagrant reload is needed to start the Docker containers.
+The three commands below will install, update and configure Centos on Vagrant.  It will download and install Docker and create the necessary users and groups for the system.
 ```ShellSession
 cd ./vagrant
 vagrant up
+```
+Edit the VagrantFile and uncomment out thes data directory, then reload.
+```
+vim VagrantFile
+:51
+x
+:wq
 vagrant reload
 ```
-Login to the VM and run setup.sh. This script sets environment variables and configures another script to launch Docker containers at startup.   
+
+Login to the VM and run setup.sh. This script sets environment variables and configures another script to pull the Docker images from NetFileBox docker hub repository and launch the containers at startup.   
 ```ShellSession
 vagrant ssh
 cd netfilebox/host
@@ -76,6 +84,10 @@ ctrl-c
 ```ShellSession
 cd ./vagrant
 vagrant up
+vim VagrantFile
+:51
+x
+:wq
 vagrant reload
 vagrant ssh
 cd ./netfilebox/dockerfiles/netfilebox
