@@ -40,22 +40,15 @@ cd ./vagrant
 vagrant up
 ```
 Edit the VagrantFile and uncomment out thes data directory, then reload.
+<<<<<<< HEAD
 ```
+=======
+```ShellSession
+>>>>>>> 717cfde504e32566f5c0dd2ccd4d151a1d49a959
 vim VagrantFile
 :51
 x
 :wq
-vagrant reload
-```
-
-Login to the VM and run setup.sh. This script sets environment variables and configures another script to pull the Docker images from NetFileBox docker hub repository and launch the containers at startup.   
-```ShellSession
-vagrant ssh
-cd netfilebox/host
-sudo ./setup.sh
-```
-Logout out the VM and reload vagrant to reboot the system. Docker images are pulled from NetFileBox and started. It will take a few minutes depending on your connection speed.
-```ShellSession
 vagrant reload
 ```
 
