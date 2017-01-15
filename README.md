@@ -60,17 +60,6 @@ Logout out the VM and reload vagrant to reboot the system. Docker images are pul
 vagrant reload
 ```
 
-Login to the VM and run setup.sh. This script sets environment variables and configures another script to pull the Docker images from NetFileBox docker hub repository and launch the containers at startup.   
-```ShellSession
-vagrant ssh
-cd netfilebox/host
-sudo ./setup.sh
-```
-Logout out the VM and reload vagrant to reboot the system. Docker images are pulled from NetFileBox and started. It will take a few minutes depending on your connection speed.
-```ShellSession
-exit
-vagrant reload
-```
 Log back into the system and type *docker images*
 ```ShellSession
 vagrant ssh
