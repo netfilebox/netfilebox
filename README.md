@@ -42,7 +42,7 @@ vagrant up
 Edit the Vagrantfile and uncomment out thes data directory, then reload.
 ```
 vim Vagrantfile
-:51
+:48
 x
 :wq
 vagrant reload
@@ -97,7 +97,7 @@ ctrl-c
 cd ./vagrant
 vagrant up
 vim Vagrantfile
-:51
+:48
 x
 :wq
 vagrant reload
