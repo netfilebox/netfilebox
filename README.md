@@ -21,6 +21,14 @@ cd netfilebox
 vagrant plugin install vagrant-vbguest
 ```
 
+# Linux users need to use 'rsync' for directory mounts
+Linux users only: modify the four **config.vm.synced_folder** lines in the Vagrantfile lines 48 through 51
+
+change    
+type: **"virtualbox"**  
+to  
+type: **"rsync"**  
+
 ## Choose the type of install 
 
 ### The following two install types are available:
