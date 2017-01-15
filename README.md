@@ -53,6 +53,7 @@ Login to the VM and run setup.sh. This script sets environment variables and con
 vagrant ssh
 cd netfilebox/host
 sudo ./setup.sh
+exit
 ```
 Logout out the VM and reload vagrant to reboot the system. Docker images are pulled from NetFileBox and started. It will take a few minutes depending on your connection speed.
 ```ShellSession
