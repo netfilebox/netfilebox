@@ -39,9 +39,9 @@ The three commands below will install, update and configure Centos on Vagrant.  
 cd ./vagrant
 vagrant up
 ```
-Edit the VagrantFile and uncomment out thes data directory, then reload.
+Edit the Vagrantfile and uncomment out thes data directory, then reload.
 ```
-vim VagrantFile
+vim Vagrantfile
 :51
 x
 :wq
@@ -96,7 +96,7 @@ ctrl-c
 ```ShellSession
 cd ./vagrant
 vagrant up
-vim VagrantFile
+vim Vagrantfile
 :51
 x
 :wq
