@@ -50,13 +50,17 @@ cd vagrant
 vagrant up
 sed -i 's/end #END//' Vagrantfile
 if [ $OS == "LINUX" ]; then
-   echo '  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> "rsync", :group=>"www-data", :mount_options => ["dmode=0770", "fmode=0770"], type: "rsync"' >> Vagrantfile
+   echo '  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> "vagrant", :group=>"www-data", :mount_options => ["dmode=0770", "fmode=0770"], type: "rsync"' >> Vagrantfile
 else
-   echo '  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> "rsync", :group=>"www-data", :mount_options => ["dmode=0770", "fmode=0770"], type: "virtualbox"' >> Vagrantfile
+   echo '  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> "vagrant", :group=>"www-data", :mount_options => ["dmode=0770", "fmode=0770"], type: "virtualbox"' >> Vagrantfile
 fi
 echo "end" >> Vagrantfile
 vagrant reload
-vagrant ssh -c 'cd netfilebox/host && sudo ./setup.sh'
+if [ $INSTALL_TYPE == "1" ]; then
+   vagrant ssh -c 'cd netfilebox/host && sudo ./setup.sh'
+else
+   vagrant ssh -c 'cd netfilebox/host && sudo ./setup-scratch.sh'
+fi
 vagrant reload
 vagrant ssh -c 'watch -x docker images'
 vagrant ssh -c 'cd /opt/netfilebox && docker-compose logs'
