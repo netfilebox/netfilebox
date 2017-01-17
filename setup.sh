@@ -26,6 +26,7 @@ echo "Enter [1] to pull pre-built images from NetFileBox"
 echo "Enter [2] to build all images locally from scratch "
 echo -n ""
 read INSTALL_TYPE 
+INSTALL_TYPE=1
 echo
 echo "Selected install type # $INSTALL_TYPE"
 case $INSTALL_TYPE in
