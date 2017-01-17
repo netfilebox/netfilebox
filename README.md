@@ -31,7 +31,7 @@ Enter [1] to pull pre-built images web/db/Nextcloud from NetFileBox Docker Hub R
 Enter [2] to build all images locally from scratch 
 
 ```
-
+**Install type #2 is not currenly working -- it will be fixed in the next day 01/17/2017** 
 
 After several minutes a screen like this will display.  **Wait for all three images to appear**
 ```
