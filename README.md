@@ -44,7 +44,7 @@ netfilebox/web         latest              0bcb1e885808        4 months ago     
 ```
 Hit **ctrl-c** to continue..
 
-The next screen will diplay this.. Wait for the repeating ***Waiting for SSL keys...** messages
+The next screen will diplay this.. Wait for the repeating **Waiting for SSL keys...** messages
 
 ```
 db        | 170117 02:44:43 mysqld_safe Logging to syslog.
