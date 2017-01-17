@@ -22,7 +22,7 @@ case $OS in
 esac
 echo
 echo "Enter Install Type"
-echo "Enter [1] to pull pre-built images web/db/Nextcloud from NetFileBox Docker Hub Repo "
+echo "Enter [1] to pull pre-built images from NetFileBox"
 echo "Enter [2] to build all images locally from scratch "
 echo -n ""
 read INSTALL_TYPE 
