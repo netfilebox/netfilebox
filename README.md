@@ -14,103 +14,76 @@ The environment that this runs is a Centos VM in Vagrant. [Read background infor
       * Select 'Check out as-is, commit as-is'
 
 
-# Clone the repository
+# Get up and running in three simple steps 
 ```ShellSession
-git clone https://github.com/netfilebox/netfilebox.git
-cd netfilebox
-vagrant plugin install vagrant-vbguest
+1. git clone https://github.com/netfilebox/netfilebox.git
+2. cd netfilebox
+3. ./setup.sh
 ```
 
-# Linux users need to use 'rsync' for directory mounts
-Linux users only: modify the four **config.vm.synced_folder** lines in the Vagrantfile lines 48 through 51
+Setup will ask these questions
+```
+Enter [1] for Windows 
+Enter [2] for Linux or Mac 
 
-change    
-type: **"virtualbox"**  
-to  
-type: **"rsync"**  
+Enter Install Type
+Enter [1] to pull pre-built images web/db/Nextcloud from NetFileBox Docker Hub Repo 
+Enter [2] to build all images locally from scratch 
 
-## Choose the type of install 
+```
+
+
+After several minutes a screen like this will display.  **Wait for all three images to appear**
+```
+Every 2.0s: docker images                                                                                                                                             Tue Jan 17 02:44:28 2017
+
+REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
+netfilebox/nextcloud   latest              ff598d742826        9 days ago          612.5 MB
+netfilebox/db          latest              d81fc9ee4499        4 months ago        381 MB
+netfilebox/web         latest              0bcb1e885808        4 months ago        508.4 MB
+```
+Hit **ctrl-c** to continue..
+
+The next screen will diplay this.. Wait for the repeating ***Waiting for SSL keys...** messages
+
+```
+db        | 170117 02:44:43 mysqld_safe Logging to syslog.
+db        | 170117 02:44:43 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
+web       | Waiting for SSL keys...
+```
+Hit **ctrl-c** to continue..
+
+The last screen will show this.. 
+```
+writing new private key to '/opt/ssl/self-signed/netfilebox.key'
+...
+Country Name (2 letter code) [AU]:
+```
+**DON'T TYPE ANYTHING**. An automated script will fill in the values.   
+
+When this completes, the system will be READY!
+#### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
+
+# What setup does...
+1. select the host OS type  
+2. choose the install type  
+## 1. Select host type 
+VM to HOST drive mount sync type differs based on the host OS.   
+   * Windows uses 'virtualbox'
+   * Linux / Mac OS uses 'rsync'  
+
+This is specified in the **config.vm.synced_folder** entries in the Vagrantfile
+
+## 2. Choose the type of install 
 
 ### The following two install types are available:
-1. pre-built images maintained by NetFileBox 
-   * quicker install - images contain applications that have been pre-configured 
-   * image updates are automatic
-2. build images yourself locally from scratch 
+#### Type 1. pulls pre-built images maintained by NetFileBox 
+   * quicker install - (13 minutes on my system) images contain applications that have been pre-configured 
+   * image updates are simple to pull   
+
+#### Type 2. build images yourself locally from scratch 
    * takes longer - images and applications are downloaded and configured locally 
    * you maintain and control updates  
 
-Both install types are simple to do. Just copy and paste the listed commands one at a time.
-
-### Install Type 1: images pre-built by NetFileBox   
-The three commands below will install, update and configure Centos on Vagrant.  It will download and install Docker and create the necessary users and groups for the system.
-```ShellSession
-cd ./vagrant
-vagrant up
-```
-Edit the Vagrantfile and uncomment out thes data directory, then reload.
-```
-vim Vagrantfile
-:48
-x
-:wq
-vagrant reload
-```
-
-Login to the VM and run setup.sh. This script sets environment variables and configures another script to pull the Docker images from NetFileBox docker hub repository and launch the containers at startup.   
-```ShellSession
-vagrant ssh
-cd netfilebox/host
-sudo ./setup.sh
-exit
-```
-Logout out the VM and reload vagrant to reboot the system. Docker images are pulled from NetFileBox and started. It will take a few minutes depending on your connection speed.
-```ShellSession
-vagrant reload
-```
-
-Log back into the system and type *docker images*
-```ShellSession
-vagrant ssh
-watch -x docker images
-```
-When the three images (db, web, and nextcloud) have been downloaded view the logs of the initailizing containers   
-```ShellSession
-ctrl-c
-cd /opt/netfilebox
-docker-compose logs
-```
-Everything is placed under /opt/netfilebox   
-When you see this message **Waiting for SSL keys...** then exit the log and we will generate a self-signed SSL certificate.
-
-```ShellSession
-ctrl-c
-./bin/self-signed.sh
-```
-**Don't type anything**. An automated script fills out the values for the ssh key generation. When complete the system is ready! Logon with the browser.   
-### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
-
 ---
-### Install Type 2: Build images locally from scratch
-```ShellSession
-cd ./vagrant
-vagrant up
-vim Vagrantfile
-:48
-x
-:wq
-vagrant reload
-vagrant ssh
-cd ./netfilebox/dockerfiles/netfilebox
-./build-all.sh
-cd ~/netfilebox/host
-sudo ./setup-scatch.sh
-exit
-vagrant reload
-vagrant ssh
-cd /opt/netfilebox
-docker-compose logs
-ctrl-c
-./bin/self-signed.sh
-wait for completion
-```
-### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
+![netfilebox-nextcloud](https://paulsrusso.github.io/netfilebox/images/netfilebox-nextcloud.png)
