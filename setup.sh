@@ -8,7 +8,7 @@ read OS
 echo
 case $OS in
    1 ) 
-      OS="WIN"
+      OS="WINDOWS"
       echo "Selected [Windows]"
       ;;
    2 )
@@ -43,20 +43,21 @@ echo
 echo "Configuring system..."
 echo
 
+cd vagrant
 if [ $OS == "LINUX" ]; then
-   sed -i 's/type: "virtualbox"/type: "rsync"/' vagrant/Vagrantfile
+   sed -i 's/type: "virtualbox"/type: "rsync"/' Vagrantfile
+   sed -i 's/end #END//' Vagrantfile
+   echo '  config.vm.synced_folder "../data", "/opt/netfilebox/data/web"' >> Vagrantfile
+   echo "end" >> Vagrantfile
 fi
 vagrant plugin install vagrant-vbguest
-cd vagrant
 vagrant up
-sed -i 's/end #END//' Vagrantfile
-if [ $OS == "LINUX" ]; then
-   echo '  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> "vagrant", :group=>"www-data", :mount_options => ["dmode=0770", "fmode=0770"], type: "rsync"' >> Vagrantfile
-else
+if [ $OS == "WINDOWS" ]; then
+   sed -i 's/end #END//' Vagrantfile
    echo '  config.vm.synced_folder "../data", "/opt/netfilebox/data/web", :owner=> "vagrant", :group=>"www-data", :mount_options => ["dmode=0770", "fmode=0770"], type: "virtualbox"' >> Vagrantfile
+   echo "end" >> Vagrantfile
+   vagrant reload
 fi
-echo "end" >> Vagrantfile
-vagrant reload
 if [ $INSTALL_TYPE == "1" ]; then
    vagrant ssh -c 'cd netfilebox/host && sudo ./setup.sh'
 else
