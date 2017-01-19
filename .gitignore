@@ -1,3 +1,5 @@
 package.box
 .vagrant/
 Vagrantfile
+data/logs
+data/nextcloud

@@ -23,17 +23,19 @@ The environment that this runs is a Centos VM in Vagrant. [Read background infor
 
 Setup will ask these questions
 ```
+Enter your host OS
 Enter [1] for Windows 
 Enter [2] for Linux or Mac 
 
-Enter Install Type
-Enter [1] to pull pre-built images web/db/Nextcloud from NetFileBox Docker Hub Repo 
-Enter [2] to build all images locally from scratch 
-
+Enter install type
+Enter [1] pull pre-built images from NetFileBox
+Enter [2] build all images locally from scratch 
 ```
-**Install type #2 is not currenly working -- it will be fixed in the next day 01/17/2017** 
 
-After several minutes a screen like this will display.  **Wait for all three images to appear**
+---
+**BEGIN Install type [1] only output**  
+After several minutes a screen like this will display for install type [1].  
+**Wait for all three images to appear**
 ```
 Every 2.0s: docker images                                                                                                                                             Tue Jan 17 02:44:28 2017
 
@@ -42,9 +44,11 @@ netfilebox/nextcloud   latest              ff598d742826        9 days ago       
 netfilebox/db          latest              d81fc9ee4499        4 months ago        381 MB
 netfilebox/web         latest              0bcb1e885808        4 months ago        508.4 MB
 ```
-Hit **ctrl-c** to continue..
+Hit **ctrl-c** to continue..  
+**END Install type [1] output only** 
 
-The next screen will diplay this.. Wait for the repeating **Waiting for SSL keys...** messages
+---
+The next screen will diplay this for **both install types** Wait for the repeating **Waiting for SSL keys...** messages
 
 ```
 db        | 170117 02:44:43 mysqld_safe Logging to syslog.
@@ -65,24 +69,22 @@ When this completes, the system will be READY!
 #### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
 
 # What setup does...
-1. select the host OS type  
-2. choose the install type  
-## 1. Select host type 
-VM to HOST drive mount sync type differs based on the host OS.   
-   * Windows uses 'virtualbox'
-   * Linux / Mac OS uses 'rsync'  
-
-This is specified in the **config.vm.synced_folder** entries in the Vagrantfile
-
-## 2. Choose the type of install 
-
-### The following two install types are available:
-#### Type 1. pulls pre-built images maintained by NetFileBox 
+1. Downloads, boots and updates a brand new new Centos 7 image using Vagrant 
+2. Downloads Docker, Docker Compose 
+3. Downloads utilities by running this command.. 
+```ShellSession
+sudo yum update -y && yum install -y net-tools wget curl python unzip zip cron vim epel-release
+```
+###Install type [1] pulls pre-built images maintained by NetFileBox 
    * quicker install - (13 minutes on my system) images contain applications that have been pre-configured 
-   * image updates are simple to pull   
+   * image updates are simple to pull from the [NetFileBox Docker Hub Repository](https://hub.docker.com/search/?q=netfilebox)  
 
-#### Type 2. build images yourself locally from scratch 
-   * takes longer - images and applications are downloaded and configured locally 
+###Install type [2] builds images locally from scratch 
+   * takes longer - (27 minutes on my system)
+   * Docker images are created from scratch after downloading and configuring applications locally 
+     * MySQL
+     * NGINX
+     * Nextcloud
    * you maintain and control updates  
 
 ---
