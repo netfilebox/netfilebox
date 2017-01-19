@@ -62,6 +62,7 @@ else
    vagrant ssh -c 'cd ~/netfilebox/dockerfiles/netfilebox && sudo ./build-all.sh'
    vagrant ssh -c 'cd ~/netfilebox/host && sudo ./setup-scratch.sh'
    vagrant reload
+   sleep 2m
 fi
 vagrant ssh -c 'cd /opt/netfilebox && docker-compose logs'
 vagrant ssh -c 'cd /opt/netfilebox && ./bin/self-signed.sh'
