@@ -1,6 +1,6 @@
 FROM netfilebox_baseos
 MAINTAINER Paul S. Russo  "paul.russo@netfilebox.com"
-ARG NEXTCLOUD_VERSION=11.0.0
+ARG NEXTCLOUD_VERSION=11.0.1
 
 RUN apt-get -y install cifs-utils smbclient
 RUN mkdir -p /opt/www && cd /opt/www && \
