@@ -3,7 +3,7 @@
 * Twitter: [@PaulSRusso](https://twitter.com/@PaulSRusso)
 * View [My Projects](https://paulsrusso.github.io)
 
-The environment that this runs is a Centos VM in Vagrant. [Read background information](https://paulsrusso.github.io/netfilebox) on this setup.
+This setup uses Docker images that run in a Vagrant provisioned Centos VM. [Read background information](https://paulsrusso.github.io/netfilebox) on this setup.
 
 # Prerequisites
 * Download and Install <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box</a>
@@ -57,7 +57,7 @@ web       | Waiting for SSL keys...
 ```
 Hit **ctrl-c** to continue..
 
-The last screen will show this.. 
+The last screen shows this.. 
 ```
 writing new private key to '/opt/ssl/self-signed/netfilebox.key'
 ...
@@ -89,3 +89,10 @@ sudo yum update -y && yum install -y net-tools wget curl python unzip zip cron v
 
 ---
 ![netfilebox-nextcloud](https://paulsrusso.github.io/netfilebox/images/netfilebox-nextcloud.png)
+
+Below is the *baseos* Dockerfile in which all images are based.
+```
+FROM debian:latest
+MAINTAINER Paul S. Russo  "paul.russo@netfilebox.com"
+RUN apt-get update && apt-get autoremove && apt-get -y install vim curl wget zip unzip bzip2
+```
