@@ -3,7 +3,7 @@
 * Twitter: [@PaulSRusso](https://twitter.com/@PaulSRusso)
 * View [My Projects](https://paulsrusso.github.io)
 
-This setup uses Docker images that run in a Vagrant provisioned Centos VM. [Read background information](https://paulsrusso.github.io/netfilebox) on this setup.
+This setup uses Docker images that run in a Vagrant provisioned Centos VM. [Read background information](https://paulsrusso.github.io/netfilebox)
 
 # Prerequisites
 * Download and Install <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box</a>
