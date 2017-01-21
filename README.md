@@ -79,6 +79,7 @@ When complete, **the system is be READY!**
 ### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
 If the setup fails for some reason, or to try a differnet install type, it can be re-run.  
 ```ShellSession
+rm -f ./data
 cd vagrant 
 vagrant destroy -f
 cd ../
