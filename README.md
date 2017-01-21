@@ -79,7 +79,7 @@ Country Name (2 letter code) [AU]:
 
 When complete, **the system is be READY!**
 ### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
-If the setup fails for some reason, or to try a differnet install type, it can be re-run.  
+If you wish to try a differnet install type, or setup fails for some reason, re-run it.  
 ```ShellSession
 cd vagrant 
 vagrant destroy -f
