@@ -3,7 +3,18 @@
 * Twitter: [@PaulSRusso](https://twitter.com/@PaulSRusso)
 * View [My Projects](https://paulsrusso.github.io)
 
-This setup uses Docker images that run in a Vagrant provisioned Centos VM. [Read background information](https://paulsrusso.github.io/netfilebox)
+
+This project automates the installation and configuration of [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), and [Nextcloud](https://nextcloud.com/). It creates an isolated running system in a few simple steps.  
+
+The setup script:    
+* downloads, boots and updates a fresh [Centos VM](https://atlas.hashicorp.com/centos/boxes/7) in an isolated environment using [Vagrant](https://www.vagrantup.com/)
+* installs [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose/) on the Centos VM
+
+Choose from one of two install types:  
+1. pull pre-built Docker images from the [NetFileBox Docker Hub Repository](https://hub.docker.com/search/?q=netfilebox/)  
+2. build and configure Docker images locally from scratch.
+
+It is a completely automated process. Read [background information](https://paulsrusso.github.io/netfilebox).
 
 # Prerequisites
 * Download and Install <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Virtual Box</a>
@@ -35,7 +46,6 @@ Enter [2] build all images locally from scratch
 ---
 **BEGIN Install type [1] only output**  
 After several minutes a screen like this will display for install type [1].  
-**Wait for all three images to appear**
 ```
 Every 2.0s: docker images                                                                                                                                             Tue Jan 17 02:44:28 2017
 
@@ -44,48 +54,29 @@ netfilebox/nextcloud   latest              ff598d742826        9 days ago       
 netfilebox/db          latest              d81fc9ee4499        4 months ago        381 MB
 netfilebox/web         latest              0bcb1e885808        4 months ago        508.4 MB
 ```
-Hit **ctrl-c** to continue..  
+**Wait for all three images to appear**, the hit **[ctrl-c]** to continue..  
 **END Install type [1] output only** 
 
 ---
-The next screen will diplay this for **both install types** Wait for the repeating **Waiting for SSL keys...** messages
+**Both install types** display this next screen 
 
 ```
 db        | 170117 02:44:43 mysqld_safe Logging to syslog.
 db        | 170117 02:44:43 mysqld_safe Starting mysqld daemon with databases from /var/lib/mysql
 web       | Waiting for SSL keys...
 ```
-Hit **ctrl-c** to continue..
+Wait for the repeating **Waiting for SSL keys...** message, then hit **[ctrl-c]** to continue..
 
-The last screen shows this.. 
+**Both install types** display this last screen 
 ```
 writing new private key to '/opt/ssl/self-signed/netfilebox.key'
 ...
 Country Name (2 letter code) [AU]:
 ```
-**DON'T TYPE ANYTHING**. An automated script will fill in the values.   
+**DON'T TYPE ANYTHING**. An automated script fills in the values and generates self-signed SSL keys used by the NGINX web server.   
 
-When this completes, the system will be READY!
-#### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
-
-# What setup does...
-1. Downloads, boots and updates a brand new new Centos 7 image using Vagrant 
-2. Downloads Docker, Docker Compose 
-3. Downloads utilities by running this command.. 
-```ShellSession
-sudo yum update -y && yum install -y net-tools wget curl python unzip zip cron vim epel-release
-```
-###Install type [1] pulls pre-built images maintained by NetFileBox 
-   * quicker install - (13 minutes on my system) images contain applications that have been pre-configured 
-   * image updates are simple to pull from the [NetFileBox Docker Hub Repository](https://hub.docker.com/search/?q=netfilebox)  
-
-###Install type [2] builds images locally from scratch 
-   * takes longer - (27 minutes on my system)
-   * Docker images are created from scratch after downloading and configuring applications locally 
-     * MySQL
-     * NGINX
-     * Nextcloud
-   * you maintain and control updates  
+When complete, **the system is be READY!**
+### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
 
 ---
 ![netfilebox-nextcloud](https://paulsrusso.github.io/netfilebox/images/netfilebox-nextcloud.png)
