@@ -4,7 +4,7 @@
 * View [My Projects](https://paulsrusso.github.io)
 
 
-This project automates the installation and configuration of [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), and [Nextcloud](https://nextcloud.com/). It creates an isolated running system in a few simple steps.  
+This project automates the installation and configuration of [NGINX](https://www.nginx.com/), [MySQL](https://www.mysql.com/), and [Nextcloud](https://nextcloud.com/) in an isolated environment. It creates a running system in a few simple steps.  
 
 The setup script:    
 * downloads, boots and updates a fresh [Centos VM](https://atlas.hashicorp.com/centos/boxes/7) in an isolated environment using [Vagrant](https://www.vagrantup.com/)
@@ -12,6 +12,7 @@ The setup script:
 
 Choose from one of two install types:  
 1. pull pre-built Docker images from the [NetFileBox Docker Hub Repository](https://hub.docker.com/search/?q=netfilebox/)  
+
 2. build and configure Docker images locally from scratch.
 
 It is a completely automated process. Read [background information](https://paulsrusso.github.io/netfilebox).
