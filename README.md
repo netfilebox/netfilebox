@@ -14,6 +14,8 @@ Choose from one of two install types:
 1. pull pre-built Docker images from the [NetFileBox Docker Hub Repository](https://hub.docker.com/search/?q=netfilebox/)  
 2. build and configure Docker images locally from scratch.
 
+The pre-built install takes between 10 and 15 minutes on my system. Building from scratch takes about 25 to 30 minutes.
+
 It is a completely automated process. Read [background information](https://paulsrusso.github.io/netfilebox).
 
 # Prerequisites
