@@ -27,7 +27,7 @@ It is a completely automated process. Read [background information](https://paul
       * Select 'Check out as-is, commit as-is'
 
 
-# Get up and running in three simple steps 
+## Get up and running in three simple steps 
 ```ShellSession
 1. git clone https://github.com/netfilebox/netfilebox.git
 2. cd netfilebox
