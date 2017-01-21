@@ -34,7 +34,7 @@ It is a completely automated process. Read [background information](https://paul
 3. ./setup.sh
 ```
 
-Setup will ask these questions
+Setup prompts:
 ```
 Enter your host OS
 Enter [1] for Windows 
