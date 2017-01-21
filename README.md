@@ -77,6 +77,13 @@ Country Name (2 letter code) [AU]:
 
 When complete, **the system is be READY!**
 ### [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
+If the setup fails for some reason, or to try a differnet install type, it can be re-run.  
+```ShellSession
+cd vagrant 
+vagrant destroy -f
+cd ../
+./setup.sh
+```
 
 ---
 ![netfilebox-nextcloud](https://paulsrusso.github.io/netfilebox/images/netfilebox-nextcloud.png)
