@@ -12,7 +12,6 @@ The setup script:
 
 Choose from one of two install types:  
 1. pull pre-built Docker images from the [NetFileBox Docker Hub Repository](https://hub.docker.com/search/?q=netfilebox/)  
-
 2. build and configure Docker images locally from scratch.
 
 It is a completely automated process. Read [background information](https://paulsrusso.github.io/netfilebox).
