@@ -82,7 +82,7 @@ If the setup fails for some reason, or to try a differnet install type, it can b
 cd vagrant 
 vagrant destroy -f
 cd ../
-rm -f ./data
+rm -f ./data && mkdir ./data
 ./setup.sh
 ```
 
