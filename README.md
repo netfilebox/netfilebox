@@ -77,7 +77,7 @@ Country Name (2 letter code) [AU]:
 ```
 **DON'T TYPE ANYTHING**. An automated script fills in the values and generates self-signed SSL keys used by the NGINX web server.   
 
-When complete, launch [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)
+When complete, launch [https://localhost:8443/nextcloud/index.php](https://localhost:8443/nextcloud/index.php)   
 If you wish to try a differnet install type, or setup fails for some reason, re-run it.  
 ```ShellSession
 cd vagrant 
