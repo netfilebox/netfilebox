@@ -1,5 +1,8 @@
 #!/bin/bash
 export EXTERNAL_IP=$(ifconfig eth0|grep 'inet '|awk '{print $2}')
+if [ -z "$EXTERNAL_IP" ]; then
+  export EXTERNAL_IP=$(ifconfig enp0s3|grep 'inet '|awk '{print $2}')
+fi
 export NETWORK_IP=$(route -n|grep 'U .*eth0'|awk '{print $1}')
 export MAC_ADDRESS=$(cat /sys/class/net/eth0/address)
 export FQDN=$(cat /etc/hostname)

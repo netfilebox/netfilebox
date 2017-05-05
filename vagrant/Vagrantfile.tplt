@@ -24,12 +24,18 @@ $script = <<SCRIPT
    service postfix stop
    chkconfig postfix off
 
+   # enable ipv4 forwarding, otherwise updates will fail
+   sudo touch /etc/sysctl.d/55-default.conf
+   sudo chmod 777 /etc/sysctl.d/55-default.conf
+   sudo echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/55-default.conf
+   sudo chmod 644 /etc/sysctl.d/55-default.conf
+
 SCRIPT
 
 Vagrant.configure(2) do |config|
   config.ssh.insert_key = false
 
-  config.vm.box = "centos/7"
+  config.vm.box = "bento/centos-7.3"
 
   config.vm.provider "virtualbox" do |v|
     v.name = "NetFileBox"

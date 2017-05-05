@@ -1,10 +1,12 @@
 FROM netfilebox_baseos
 MAINTAINER Paul S. Russo  "paul.russo@netfilebox.com"
-ARG NEXTCLOUD_VERSION=11.0.1
+ARG NEXTCLOUD_VERSION=12.0.0beta1
+ARG RELEASE_LEVEL=prereleases
+#ARG RELEASE_LEVEL=releases
 
 RUN apt-get -y install cifs-utils smbclient
 RUN mkdir -p /opt/www && cd /opt/www && \
-wget https://download.nextcloud.com/server/releases/nextcloud-$NEXTCLOUD_VERSION.zip && \
+wget https://download.nextcloud.com/server/$RELEASE_LEVEL/nextcloud-$NEXTCLOUD_VERSION.zip && \
 unzip /opt/www/nextcloud-$NEXTCLOUD_VERSION.zip && \
 rm /opt/www/nextcloud-$NEXTCLOUD_VERSION.zip
 RUN chown www-data:www-data /opt/www/nextcloud -R
